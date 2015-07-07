@@ -11,6 +11,7 @@ import org.zkoss.util.resource.Labels;
 import org.zkoss.zk.ui.Executions;
 import org.zkoss.zul.Window;
 
+import com.dtc.common.zk.util.I18nLocator;
 import com.dtc.common.zk.util.MessageBoxUtil;
 
 /**
@@ -24,6 +25,8 @@ import com.dtc.common.zk.util.MessageBoxUtil;
  * @author MontyPan
  */
 public class BaseViewModel {
+	static { I18nLocator.register(); }
+	
 	private Binder binder;
 	
 	protected BaseViewModel() {}
@@ -84,7 +87,7 @@ public class BaseViewModel {
 	}
 	
 	protected void handleDaoException(Exception e) {
-		MessageBoxUtil.error(Labels.getLabel("error.dao.exception") + "\n" + e.getLocalizedMessage());
+		MessageBoxUtil.error(Labels.getLabel("dtc.zk.error.dao.exception") + "\n" + e.getLocalizedMessage());
 		e.printStackTrace();
 	}
 	

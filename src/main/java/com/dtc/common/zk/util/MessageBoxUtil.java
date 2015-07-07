@@ -6,23 +6,20 @@ import org.zkoss.zk.ui.event.EventListener;
 import org.zkoss.zul.Messagebox;
 
 public class MessageBoxUtil {
-	static {
-		//FIXME
-		Messagebox.setTemplate("/WEB-INF/pages/zul/zk/zul/html/MioboxMessagebox.zul");
-	}
-
+	static { I18nLocator.register(); }
+	
 	public static void error(String message) {
-		String title = Labels.getLabel("msg.error.title");
+		String title = Labels.getLabel("dtc.zk.error.title");
 		Messagebox.show(message, title, Messagebox.OK, Messagebox.ERROR);
 	}
 
 	public static void info(String message) {
-		String title = Labels.getLabel("msg.info.title");
+		String title = Labels.getLabel("dtc.zk.info.title");
 		Messagebox.show(message, title, Messagebox.OK, Messagebox.INFORMATION);
 	}
 
 	public static void confirm(String message, EventListener<Event> listener) {
-		String title = Labels.getLabel("msg.confirm.title");
+		String title = Labels.getLabel("dtc.zk.confirm.title");
 		Messagebox.show(
 			message, 
 			title, 
@@ -32,7 +29,7 @@ public class MessageBoxUtil {
 	}
 
 	public static boolean confirm(String message) {
-		String title = Labels.getLabel("msg.confirm.title");
+		String title = Labels.getLabel("dtc.zk.confirm.title");
 		int buttonIndex = Messagebox.show(message, title, Messagebox.YES | Messagebox.NO, Messagebox.QUESTION);
 		return (buttonIndex == Messagebox.OK);
 	}

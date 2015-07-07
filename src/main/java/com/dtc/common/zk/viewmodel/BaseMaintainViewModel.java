@@ -109,7 +109,7 @@ public abstract class BaseMaintainViewModel<T extends Entity> extends BaseEntity
 	@Command
 	public void selectData() {
 		if (editFlag && editorForm.isDirty()) {	//在編輯中又選了資料
-			MessageBoxUtil.confirm(Labels.getLabel("msg.confirm.editorDirty"), selectConfirm);
+			MessageBoxUtil.confirm(Labels.getLabel("dtc.zk.confirm.editorDirty"), selectConfirm);
 			return;
 		}
 		processSelect();
@@ -119,7 +119,7 @@ public abstract class BaseMaintainViewModel<T extends Entity> extends BaseEntity
 		currentData = getListModel().getSelection().iterator().next();
 		backupData = currentData.<T>cloneEntity();
 		
-		status = Labels.getLabel("ui.status.update");
+		status = Labels.getLabel("dtc.zk.ui.status.update");
 		newFlag = false;
 		editFlag = true;
 		deleteFlag = true;
@@ -156,7 +156,7 @@ public abstract class BaseMaintainViewModel<T extends Entity> extends BaseEntity
 		currentData = newEntity();
 		backupData = null;
 
-		status = Labels.getLabel("ui.status.add");
+		status = Labels.getLabel("dtc.zk.ui.status.add");
 		newFlag = true;
 		editFlag = true;
 		deleteFlag = false;
@@ -175,7 +175,7 @@ public abstract class BaseMaintainViewModel<T extends Entity> extends BaseEntity
 	public void delete() {
 		//避免因為還沒 onBlur 導致 fxStatus 沒更新導致按鈕還沒 disable 就按下去的哏
 		if (editorForm.isDirty()) { return; }
-		MessageBoxUtil.confirm(Labels.getLabel("msg.confirm.delete"), deleteConfirm);
+		MessageBoxUtil.confirm(Labels.getLabel("dtc.zk.confirm.delete"), deleteConfirm);
 	}
 	
 	private void processDelete() {
@@ -205,7 +205,7 @@ public abstract class BaseMaintainViewModel<T extends Entity> extends BaseEntity
 	@Command
 	public void cancel() {
 		if (editorForm.isDirty()) {
-			MessageBoxUtil.confirm(Labels.getLabel("msg.confirm.editorDirty"), cancelConfirm);
+			MessageBoxUtil.confirm(Labels.getLabel("dtc.zk.confirm.editorDirty"), cancelConfirm);
 			return;
 		}
 		processCancel();
