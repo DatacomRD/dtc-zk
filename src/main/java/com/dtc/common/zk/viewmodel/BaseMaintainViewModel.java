@@ -108,7 +108,7 @@ public abstract class BaseMaintainViewModel<T extends Entity> extends BaseEntity
 	@Override
 	@Command
 	public void selectData() {
-		if (editFlag && editorForm.isDirty()) {	//在編輯中又選了資料
+		if (editFlag && getEditorForm().isDirty()) {	//在編輯中又選了資料
 			MessageBoxUtil.confirm(Labels.getLabel("dtc.zk.confirm.editorDirty"), selectConfirm);
 			return;
 		}
@@ -150,7 +150,7 @@ public abstract class BaseMaintainViewModel<T extends Entity> extends BaseEntity
 	@NotifyChange("currentData")
 	public void add() {
 		//避免因為還沒 onBlur 導致 fxStatus 沒更新導致按鈕還沒 disable 就按下去的哏
-		if (editorForm.isDirty()) { return; }
+		if (getEditorForm().isDirty()) { return; }
 		
 		getListModel().clearSelection();
 		currentData = newEntity();
@@ -174,7 +174,7 @@ public abstract class BaseMaintainViewModel<T extends Entity> extends BaseEntity
 	@NotifyChange("currentData")
 	public void delete() {
 		//避免因為還沒 onBlur 導致 fxStatus 沒更新導致按鈕還沒 disable 就按下去的哏
-		if (editorForm.isDirty()) { return; }
+		if (getEditorForm().isDirty()) { return; }
 		MessageBoxUtil.confirm(Labels.getLabel("dtc.zk.confirm.delete"), deleteConfirm);
 	}
 	
@@ -204,7 +204,7 @@ public abstract class BaseMaintainViewModel<T extends Entity> extends BaseEntity
 	
 	@Command
 	public void cancel() {
-		if (editorForm.isDirty()) {
+		if (getEditorForm().isDirty()) {
 			MessageBoxUtil.confirm(Labels.getLabel("dtc.zk.confirm.editorDirty"), cancelConfirm);
 			return;
 		}
@@ -285,7 +285,7 @@ public abstract class BaseMaintainViewModel<T extends Entity> extends BaseEntity
 	 * @param value
 	 */
 	protected void setEditorFormField(String name, Object value) {
-		editorForm.setField(name, value);
+		getEditorForm().setField(name, value);
 		BindUtils.postNotifyChange(null, null, editorForm, name);
 		BindUtils.postNotifyChange(null, null, editorForm.getStatus(), "dirty");
 	}
@@ -312,18 +312,18 @@ public abstract class BaseMaintainViewModel<T extends Entity> extends BaseEntity
 	}
 	
 	public boolean isDisableAdd() {
-		return editorForm.isDirty();
+		return getEditorForm().isDirty();
 	}
 	
 	public boolean isDisableSave() {
-		return !editorForm.isDirty();
+		return !getEditorForm().isDirty();
 	}
 	
 	public boolean isDisableCancel() {
-		return !editorForm.isDirty();
+		return !getEditorForm().isDirty();
 	}
 	
 	public boolean isDisableDelete() {
-		return editorForm.isDirty() || !deleteFlag;
+		return getEditorForm().isDirty() || !deleteFlag;
 	}
 }
