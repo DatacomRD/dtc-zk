@@ -1,9 +1,7 @@
 package com.dtc.common.zk.viewmodel;
 
 import org.zkoss.bind.BindUtils;
-import org.zkoss.bind.Form;
 import org.zkoss.bind.FormStatus;
-import org.zkoss.bind.SimpleForm;
 import org.zkoss.bind.annotation.Command;
 import org.zkoss.bind.annotation.Init;
 import org.zkoss.bind.annotation.NotifyChange;
@@ -13,6 +11,7 @@ import org.zkoss.zk.ui.event.EventListener;
 import org.zkoss.zul.Messagebox;
 
 import com.dtc.boundary.Entity;
+import com.dtc.common.zk.bind.DtcForm;
 import com.dtc.common.zk.exception.UIException;
 import com.dtc.common.zk.util.MessageBoxUtil;
 
@@ -62,7 +61,7 @@ public abstract class BaseMaintainViewModel<T extends Entity> extends BaseEntity
 	private boolean newFlag;
 	private boolean editFlag;
 	private boolean deleteFlag;
-	private SimpleForm editorForm = new SimpleForm();
+	private DtcForm editorForm = new DtcForm();
 		
 	//==== Confirm 的 EventListener 區 ====//
 	private EventListener<Event> selectConfirm = new EventListener<Event>() {
@@ -295,7 +294,7 @@ public abstract class BaseMaintainViewModel<T extends Entity> extends BaseEntity
 		return newFlag;
 	}
 	
-	public Form getEditorForm() {
+	public DtcForm getEditorForm() {
 		return editorForm;
 	}
 
