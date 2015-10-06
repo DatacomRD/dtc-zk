@@ -2,6 +2,7 @@ package com.dtc.common.zk.viewmodel;
 
 import org.zkoss.bind.BindUtils;
 import org.zkoss.bind.FormStatus;
+import org.zkoss.bind.annotation.AfterCompose;
 import org.zkoss.bind.annotation.Command;
 import org.zkoss.bind.annotation.Init;
 import org.zkoss.bind.annotation.NotifyChange;
@@ -94,6 +95,9 @@ public abstract class BaseMaintainViewModel<T extends Entity> extends BaseEntity
 		
 	@Init(superclass=true)
 	public void baseMaintainInit() {}
+	
+	@AfterCompose(superclass=true)
+	public void baseMaintainAfterCompose() {}
 	
 	protected T newEntity() {
 		try {

@@ -31,7 +31,7 @@ public class BaseViewModel {
 	
 	protected BaseViewModel() {}
 	
-	@Init(superclass=true)
+	@Init
 	public void baseInit(@ContextParam(ContextType.BINDER) final Binder binder) {
 		this.binder = binder;
 	}

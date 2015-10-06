@@ -8,6 +8,7 @@ import java.util.List;
 import java.util.Map;
 
 import org.apache.commons.lang.StringUtils;
+import org.zkoss.bind.annotation.AfterCompose;
 import org.zkoss.bind.annotation.Command;
 import org.zkoss.bind.annotation.Init;
 import org.zkoss.bind.annotation.NotifyChange;
@@ -92,7 +93,10 @@ public abstract class BaseEntityViewModel<T extends Entity> extends BaseViewMode
 	}
 	
 	@Init(superclass=true)
-	public void baseEntityInit() {
+	public void baseEntityInit() {}
+	
+	@AfterCompose
+	public void baseEntityAfterCompose() {
 		search();
 	}
 	
