@@ -4,14 +4,14 @@
 	<modelVersion>4.0.0</modelVersion>
 	<groupId>com.dtc.common</groupId>
 	<artifactId>zk</artifactId>
-	<version>0.0.1</version>
+	<version>0.0.2</version>
 	<name>dtc-zk</name>
 	
 	<properties>
 		<maven.compiler.source>1.7</maven.compiler.source>
 		<maven.compiler.target>1.7</maven.compiler.target>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-		<zk.version>6.5.1</zk.version>
+		<zk.version>6.5.8.2</zk.version>
 	</properties>
 	
 	<dependencies>
